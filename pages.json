@@ -3,7 +3,10 @@
     "path": "pages/index/index",
     "style": {
       "navigationBarTitleText": "翻页Demo",
-      "enablePullDownRefresh": true
+      "enablePullDownRefresh": true,
+      "app-plus": {
+        "bounce": "none" //关闭窗口回弹效果
+      }
     }
   }],
   "easycom": {

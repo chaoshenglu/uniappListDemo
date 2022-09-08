@@ -68,6 +68,7 @@
 <style lang="scss">
   page {
     padding-bottom: 50px;
+    background-color: #F8F8F8;
   }
 
   .listCell {
