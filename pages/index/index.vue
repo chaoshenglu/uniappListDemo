@@ -2,6 +2,7 @@
   <view style="display: flex;flex-direction: column;align-items: center;">
     <view class="listCell" v-for="(item,index) in list" :key="index" @click="tapCell(item)">
       <text>第{{item.page}}页 第{{item.id}}个</text>
+      <text v-if="item.didEdit">已修改</text>
     </view>
     <u-loadmore :status="status" :line="true" marginTop="20" />
   </view>
@@ -20,6 +21,18 @@
     onLoad() {
       this.page = 1
       this.requestData()
+      uni.$on('testEdit', data => {
+        for (let item of this.list) {
+          if (`${item.page}` === `${data.page}` && `${item.id}` === `${data.id}`) {
+            item.didEdit = true
+          }
+        }
+        this.$forceUpdate()
+      })
+    },
+
+    onUnload() {
+      uni.$off('testEdit')
     },
 
     onPullDownRefresh() {

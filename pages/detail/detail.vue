@@ -2,7 +2,7 @@
   <view>
     <view class="box">
       <text>{{page}}-{{id}}</text>
-      <button style="margin-top: 40px;">测试修改</button>
+      <button style="margin-top: 40px;" @click="testEdit">测试修改</button>
     </view>
   </view>
 </template>
@@ -20,7 +20,12 @@
       this.page = option.page
     },
     methods: {
-
+      testEdit() {
+        uni.$emit('testEdit', {
+          id: this.id,
+          page: this.page
+        })
+      }
     }
   }
 </script>
