@@ -4,7 +4,8 @@
       <text>第{{item.page}}页 第{{item.id}}个</text>
       <text v-if="item.didEdit">已修改</text>
     </view>
-    <u-loadmore :status="status" :line="true" marginTop="20" />
+    <u-loadmore v-if="list && list.length > 0" :status="status" :line="true" marginTop="20" />
+    <u-empty v-if="list && list.length === 0" icon="/static/empty.png" marginTop="150" />
   </view>
 </template>
 
@@ -68,7 +69,11 @@
           let list = res.data.list || []
           if (this.page === 1) {
             this.list = list
-            this.status = 'loading'
+            if (list.length < 10) {
+              this.status = 'nomore'
+            } else {
+              this.status = 'loading'
+            }
           } else {
             this.list = this.list.concat(list)
             if (list.length < 10) {
