@@ -3,7 +3,7 @@
     <view class="listCell" v-for="(item,index) in list" :key="index">
       <text>第{{item.page}}页 第{{item.id}}个</text>
     </view>
-    <u-loadmore :status="status" />
+    <u-loadmore :status="status" :line="true" marginTop="20" />
   </view>
 </template>
 
