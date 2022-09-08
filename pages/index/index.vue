@@ -42,9 +42,8 @@
     methods: {
 
       tapCell(item) {
-        let id = item.id
         uni.navigateTo({
-          url: '/pages/detail/detail?id=' + id
+          url: `/pages/detail/detail?id=${item.id}&page=${item.page}`
         })
       },
 
