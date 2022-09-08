@@ -10,19 +10,34 @@
   export default {
     data() {
       return {
-        list: []
+        list: [],
+        page: 1,
       }
     },
+
     onLoad() {
+      this.page = 1
       this.requestData()
     },
+
+    onReachBottom() {
+      this.page = this.page + 1
+      this.requestData()
+    },
+
     methods: {
       requestData() {
         let uri = 'listByPage'
         getApp().get(uri, {
-          page: 1
+          page: this.page
         }).then(res => {
-          this.list = res.data.list
+          let data = res.data || {}
+          let list = data.list || []
+          if (this.page === 1) {
+            this.list = list
+          } else {
+            this.list = this.list.concat(list)
+          }
         }).catch(err => {
           console.log(err)
         })
