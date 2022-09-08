@@ -3,6 +3,7 @@
     <view class="listCell" v-for="(item,index) in list" :key="index">
       <text>第{{item.page}}页 第{{item.id}}个</text>
     </view>
+    <u-loadmore :status="status" />
   </view>
 </template>
 
@@ -12,17 +13,22 @@
       return {
         list: [],
         page: 1,
+        status: 'loadmore',
       }
     },
 
     onLoad() {
       this.page = 1
+      this.status = 'loadmore'
       this.requestData()
     },
 
     onReachBottom() {
       this.page = this.page + 1
       this.requestData()
+      setTimeout(() => {
+        this.status = 'loading'
+      }, 200);
     },
 
     methods: {
@@ -33,8 +39,14 @@
           let list = res.data.list || []
           if (this.page === 1) {
             this.list = list
+            this.status = 'loading'
           } else {
             this.list = this.list.concat(list)
+            if (list.length < 10) {
+              this.status = 'nomore'
+            } else {
+              this.status = 'loading'
+            }
           }
         }).catch(err => {
           console.log(err)
