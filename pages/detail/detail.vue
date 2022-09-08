@@ -1,6 +1,7 @@
 <template>
-  <view>
-
+  <view style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+    <text>{{id}}</text>
+    <button>测试修改</button>
   </view>
 </template>
 

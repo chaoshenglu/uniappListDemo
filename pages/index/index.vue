@@ -1,6 +1,6 @@
 <template>
   <view style="display: flex;flex-direction: column;align-items: center;">
-    <view class="listCell" v-for="(item,index) in list" :key="index">
+    <view class="listCell" v-for="(item,index) in list" :key="index" @click="tapCell(item)">
       <text>第{{item.page}}页 第{{item.id}}个</text>
     </view>
     <u-loadmore :status="status" :line="true" marginTop="20" />
@@ -40,6 +40,14 @@
     },
 
     methods: {
+
+      tapCell(item) {
+        let id = item.id
+        uni.navigateTo({
+          url: '/pages/detail/detail?id=' + id
+        })
+      },
+
       requestData() {
         this.status = 'loading'
         getApp().get('listByPage', {
