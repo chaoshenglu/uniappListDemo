@@ -19,20 +19,21 @@
 
     onLoad() {
       this.page = 1
-      this.status = 'loadmore'
       this.requestData()
     },
 
     onReachBottom() {
       this.page = this.page + 1
+      if (this.page === 4) {
+        this.status = 'nomore'
+        return
+      }
       this.requestData()
-      setTimeout(() => {
-        this.status = 'loading'
-      }, 200);
     },
 
     methods: {
       requestData() {
+        this.status = 'loading'
         getApp().get('listByPage', {
           page: this.page
         }).then(res => {
