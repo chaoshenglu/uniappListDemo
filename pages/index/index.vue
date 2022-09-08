@@ -22,9 +22,14 @@
       this.requestData()
     },
 
+    onPullDownRefresh() {
+      this.page = 1
+      this.requestData()
+    },
+
     onReachBottom() {
       this.page = this.page + 1
-      if (this.page === 4) {
+      if (this.page >= 4) {
         this.status = 'nomore'
         return
       }
