@@ -27,12 +27,10 @@
 
     methods: {
       requestData() {
-        let uri = 'listByPage'
-        getApp().get(uri, {
+        getApp().get('listByPage', {
           page: this.page
         }).then(res => {
-          let data = res.data || {}
-          let list = data.list || []
+          let list = res.data.list || []
           if (this.page === 1) {
             this.list = list
           } else {
