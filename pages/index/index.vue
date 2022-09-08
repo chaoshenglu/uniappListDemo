@@ -25,6 +25,9 @@
     onPullDownRefresh() {
       this.page = 1
       this.requestData()
+      setTimeout(function() {
+        uni.stopPullDownRefresh()
+      }, 1000)
     },
 
     onReachBottom() {

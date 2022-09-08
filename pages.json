@@ -2,7 +2,8 @@
   "pages": [{
     "path": "pages/index/index",
     "style": {
-      "navigationBarTitleText": "翻页Demo"
+      "navigationBarTitleText": "翻页Demo",
+      "enablePullDownRefresh": true
     }
   }],
   "easycom": {
