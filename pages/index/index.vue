@@ -1,6 +1,7 @@
 <template>
   <view style="display: flex;flex-direction: column;align-items: center;">
     <view class="listCell" v-for="(item,index) in list" :key="index">
+      <text>第{{item.page}}页 第{{item.id}}个</text>
     </view>
   </view>
 </template>
@@ -9,7 +10,7 @@
   export default {
     data() {
       return {
-        list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        list: []
       }
     },
     onLoad() {
@@ -21,7 +22,7 @@
         getApp().get(uri, {
           page: 1
         }).then(res => {
-
+          this.list = res.data.list
         }).catch(err => {
           console.log(err)
         })
@@ -46,5 +47,8 @@
     box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.04);
     margin-top: 16px;
     min-height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 </style>
