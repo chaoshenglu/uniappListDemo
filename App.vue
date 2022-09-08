@@ -10,7 +10,7 @@
       console.log('App Hide')
     },
     methods: {
-      post(uri, param) {
+      get(uri, param) {
         let baseUrl = 'https://www.fastmock.site/mock/8bd64be11a7822b9df73f824e263a142/api/'
         let url = baseUrl + uri
         console.log('🔽网络请求POST=>', url)
@@ -19,7 +19,7 @@
           uni.request({
             url: url,
             data: param,
-            method: 'POST',
+            method: 'GET',
             success: res => {
               console.log(uri, '🔼️接口返回=>', res.data)
               resolve(res.data)

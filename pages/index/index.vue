@@ -18,10 +18,9 @@
     methods: {
       requestData() {
         let uri = 'listByPage'
-        let param = {
+        getApp().get(uri, {
           page: 1
-        }
-        getApp().post(uri, param).then(res => {
+        }).then(res => {
 
         }).catch(err => {
           console.log(err)
