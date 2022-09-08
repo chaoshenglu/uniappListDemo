@@ -13,10 +13,20 @@
       }
     },
     onLoad() {
-
+      this.requestData()
     },
     methods: {
+      requestData() {
+        let uri = 'listByPage'
+        let param = {
+          page: 1
+        }
+        getApp().post(uri, param).then(res => {
 
+        }).catch(err => {
+          console.log(err)
+        })
+      }
     }
   }
 </script>
