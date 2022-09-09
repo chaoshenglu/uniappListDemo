@@ -71,14 +71,14 @@
             if (list.length < 10) {
               this.status = 'nomore'
             } else {
-              this.status = 'loading'
+              this.status = 'loadmore'
             }
           } else {
             this.list = this.list.concat(list)
             if (list.length < 10) {
               this.status = 'nomore'
             } else {
-              this.status = 'loading'
+              this.status = 'loadmore'
             }
           }
         }).catch(err => {
