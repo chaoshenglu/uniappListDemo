@@ -45,11 +45,10 @@
     },
 
     onReachBottom() {
-      this.page = this.page + 1
-      if (this.page >= 4) {
-        this.status = 'nomore'
+      if (this.status === 'nomore') {
         return
       }
+      this.page = this.page + 1
       this.requestData()
     },
 
